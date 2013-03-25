@@ -13,14 +13,15 @@ while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symli
 done
 DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
 
-if [ ! -f "$3" ]; then
-  echo "Repo $3 does not exist."
+REPO=`cd $3; pwd`
+if [ ! -f "$REPO" ]; then
+  echo "Repo $REPO does not exist."
   exit
 fi
 
 if [ -f "$DIR/../$1/$2" ]; then
-  cp "$DIR/../$1/$2" "$3/.git/hooks/$1"
-  echo "$1 hook $2 installed in repo $3"
+  cp "$DIR/../$1/$2" "$REPO/.git/hooks/$1"
+  echo "$1 hook $2 installed in repo $REPO"
 else
   echo "Unknown hook script $2 of type $1"
 fi
