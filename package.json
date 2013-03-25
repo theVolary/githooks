@@ -1,0 +1,13 @@
+{
+  "name": "githooks",
+  "version": "0.1.0",
+  "description": "Git hook installer for commonly used hook scripts",
+  "author": "Steve Krenek <steve@thevolary.com>",
+  "readmeFilename": "README.md",
+  "repository": { "type": "git", "url": "git://github.com/theVolary/githooks.git" },
+  "dependencies": {
+  },
+  "bin": {
+    "vgh-install": "bin/install.sh"
+  }
+}
