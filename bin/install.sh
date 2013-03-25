@@ -14,6 +14,7 @@ done
 DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
 echo "$DIR"
 if [ -f "$DIR/../$1/$2" ]; then
+  echo "cp $DIR/../$1/$2 $3/.git/hooks/$1"
   cp "$DIR/../$1/$2" "$3/.git/hooks/$1"
   echo "$1 hook $2 installed in repo $3"
 else
