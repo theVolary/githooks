@@ -13,9 +13,7 @@ while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symli
 done
 DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
 
-if [ -f "$3" ]; then
-
-else
+if [ ! -f "$3" ]; then
   echo "Repo $3 does not exist."
   exit
 fi
