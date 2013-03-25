@@ -5,9 +5,14 @@ if [ ! $# == 3 ]; then
   exit
 fi
 
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-echo "$DIR/../$1/$2"
-echo `env | sort`
+SOURCE="${BASH_SOURCE[0]}"
+while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symlink
+  DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
+  SOURCE="$(readlink "$SOURCE")"
+  [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE" # if $SOURCE was a relative symlink, we need to resolve it relative to the path where the symlink file was located
+done
+DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
+
 if [ -f "$DIR/../$1/$2" ]; then
   cp "$DIR/../$1/$2" "$3/.git/hooks/$1"
   echo "$1 hook $2 installed in repo $3"
