@@ -14,7 +14,7 @@ done
 DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
 
 REPO=`cd $3; pwd`
-if [ ! -f "$REPO" ]; then
+if [ ! -d "$REPO" ]; then
   echo "Repo $REPO does not exist."
   exit
 fi
